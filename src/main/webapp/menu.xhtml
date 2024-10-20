@@ -5,99 +5,106 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui"
-	template="index.xhtml">
+	xmlns:p="http://primefaces.org/ui" template="index.xhtml">
 
-		<ui:define name="content">
-		
-			<h:form>
-				<p:growl id="boolean-button" />
-				<h:panelGrid columns="2" cellpadding="5">
-					<h:outputText value="Click for yes / no" />
-					<p:selectBooleanButton id="button" value="#{userForm.check}"
-						onLabel="Yes" offLabel="No" style="width:80px"
-						onIcon="ui-icon-check" offIcon="ui-icon-close">
-						<p:ajax update="boolean-button" listener="#{userForm.addMessage}" />
-					</p:selectBooleanButton>
-				</h:panelGrid>
+	<ui:define name="content">
+
+		<h:form>
+			<p:growl id="boolean-button" />
+			<h:panelGrid columns="2" cellpadding="5">
+				<h:outputText value="Click for yes / no" />
+				<p:selectBooleanButton id="button" value="#{userForm.check}"
+					onLabel="Yes" offLabel="No" style="width:80px"
+					onIcon="ui-icon-check" offIcon="ui-icon-close">
+					<p:ajax update="boolean-button" listener="#{userForm.addMessage}" />
+				</p:selectBooleanButton>
+			</h:panelGrid>
+			<p:spacer />
+			<h:panelGrid columns="2" cellpadding="5">
+				<h:outputText value="Choose name" />
 				<p:spacer />
-				<h:panelGrid columns="2" cellpadding="5">
-					<h:outputText value="Choose name" />
-					<p:spacer />
-					<p:selectOneButton value="#{userForm.name}">
-						<f:selectItem itemLabel="heydie" itemValue="heydie" />
-						<f:selectItem itemLabel="helsa" itemValue="helsa" />
-						<f:selectItem itemLabel="hafsya" itemValue="hafsya" />
-					</p:selectOneButton>
-					<p:spacer />
-					<p:commandButton value="submit" update="display" />
-
-					<p:spacer />
-					<h:outputText value="Selected Name : " />
-					<h:outputText id="display" value="#{userForm.name}" />
-
-				</h:panelGrid>
-
-				<h:panelGrid columns="1" cellpadding="5">
-					<h:outputText value="Choose address" />
-					<p:spacer />
-					<p:selectOneRadio value="#{userForm.address}">
-						<f:selectItem itemLabel="semarang" itemValue="semarang" />
-						<f:selectItem itemLabel="jakarta" itemValue="jakarta" />
-						<f:selectItem itemLabel="surabaya" itemValue="surabaya" />
-
-						<p:ajax update="select-address-output" />
-					</p:selectOneRadio>
-
-					<p:spacer />
-					<h:outputText value="Selected Address : " />
-					<h:outputText id="select-address-output"
-						value="#{userForm.address}" />
-				</h:panelGrid>
+				<p:selectOneButton value="#{userForm.name}">
+					<f:selectItem itemLabel="heydie" itemValue="heydie" />
+					<f:selectItem itemLabel="helsa" itemValue="helsa" />
+					<f:selectItem itemLabel="hafsya" itemValue="hafsya" />
+				</p:selectOneButton>
+				<p:spacer />
+				<p:commandButton value="submit" update="display" />
 
 				<p:spacer />
-				<h:panelGrid columns="1" cellpadding="5">
+				<h:outputText value="Selected Name : " />
+				<h:outputText id="display" value="#{userForm.name}" />
 
-					<h5>Multiple</h5>
-					<p:selectCheckboxMenu id="multiple" multiple="true"
-						emptyLabel="Please select..." updateLabel="true"
-						style="min-width: 15rem" panelStyle="width: 30rem"
-						scrollHeight="250" value="#{userForm.selectedCities}">
-						<p:ajax update="sCBM" />
-						<f:selectItems value="#{userForm.cities}" />
-					</p:selectCheckboxMenu>
+			</h:panelGrid>
 
-					<h:outputText id="sCBM" value="#{userForm.selectedCities}" />
-				</h:panelGrid>
+			<h:panelGrid columns="1" cellpadding="5">
+				<h:outputText value="Choose address" />
+				<p:spacer />
+				<p:selectOneRadio value="#{userForm.address}">
+					<f:selectItem itemLabel="semarang" itemValue="semarang" />
+					<f:selectItem itemLabel="jakarta" itemValue="jakarta" />
+					<f:selectItem itemLabel="surabaya" itemValue="surabaya" />
 
-				<h:panelGrid columns="1" cellpadding="5">
+					<p:ajax update="select-address-output" />
+				</p:selectOneRadio>
 
+				<p:spacer />
+				<h:outputText value="Selected Address : " />
+				<h:outputText id="select-address-output" value="#{userForm.address}" />
+			</h:panelGrid>
 
-					<h:panelGroup id="uploadPanel">
-						<p:fileUpload id="upload" value="#{userForm.file}" mode="simple"
-							skinSimple="true" auto="true" process="@this" update="messages"
-							listener="#{userForm.handleFileUpload}"
+			<p:spacer />
+			<h:panelGrid columns="1" cellpadding="5">
+
+				<h5>Multiple</h5>
+				<p:selectCheckboxMenu id="multiple" multiple="true"
+					emptyLabel="Please select..." updateLabel="true"
+					style="min-width: 15rem" panelStyle="width: 30rem"
+					scrollHeight="250" value="#{userForm.selectedCities}">
+					<p:ajax update="sCBM" />
+					<f:selectItems value="#{userForm.cities}" />
+				</p:selectCheckboxMenu>
+
+				<h:outputText id="sCBM" value="#{userForm.selectedCities}" />
+			</h:panelGrid>
+
+			<h:panelGrid columns="1" cellpadding="5">
+				<h:panelGroup id="uploadPanel">
+					<h:panelGroup
+						style="display:flex;flex-direction:row;gap:2px;justify-content:center;
+					width:20rem;height:8rem;border:1px solid black;
+					border-radius:5px"
+						rendered="#{userForm.showUpload}">
+						<p:fileUpload label="" chooseIcon="" id="uploadxls"
+							value="#{userForm.fileUpload}" mode="simple" skinSimple="true"
+							auto="true" process="@this" update="messages" styleClass="excel"
+							listener="#{userForm.handleFileUpload()}"
+							rendered="#{userForm.showUpload}" />
+						<p:fileUpload label="" chooseIcon="" id="uploadpdf"
+							value="#{userForm.fileUpload}" mode="simple" skinSimple="true"
+							auto="true" process="@this" update="messages" styleClass="pdf"
+							listener="#{userForm.handleFileUpload()}"
 							rendered="#{userForm.showUpload}" />
 					</h:panelGroup>
-
+					
 					<!-- Output message for the uploaded file -->
-					<h:outputText id="messages" value="#{userForm.file}" />
+				
+				</h:panelGroup>
+				<h:panelGroup id="buttonPanel">
+					<p:commandButton icon="pi pi-upload" iconPos="left"
+						value="Click here to upload" action="#{userForm.showUploadButton}"
+						update="uploadPanel, buttonPanel"
+						rendered="#{userForm.showButton}" style="width:20rem; height:8rem"
+						styleClass="ui-button-outlined ui-button-secondary">
+						<!-- <p:ajax update="button-test" /> -->
+					</p:commandButton>
+					<!-- <h:outputText id="button-test" value="#{userForm.showButton}" /> -->
+				</h:panelGroup>
+			</h:panelGrid>
+			<h:outputText id="messages" value="#{userForm.fileUpload.getFileName()}" />
+		</h:form>
 
 
-					<h:panelGroup id="buttonPanel">
-						<p:commandButton value="Click"
-							action="#{userForm.showUploadButton}"
-							update="uploadPanel, buttonPanel"
-							rendered="#{userForm.showButton}">
-							<p:ajax update="button-test" />
-						</p:commandButton>
-						<h:outputText id="button-test" value="#{userForm.showButton}" />
-					</h:panelGroup>
-				</h:panelGrid>
 
-			</h:form>
-
-
-
-		</ui:define>
-	</ui:composition>
+	</ui:define>
+</ui:composition>

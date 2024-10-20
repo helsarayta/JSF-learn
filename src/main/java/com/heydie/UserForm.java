@@ -15,6 +15,7 @@ import javax.inject.Named;
 
 import org.hibernate.annotations.common.util.impl.LoggerFactory;
 import org.primefaces.event.ToggleSelectEvent;
+import org.primefaces.model.file.UploadedFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 
@@ -23,13 +24,12 @@ import com.heydie.VO.UserVo;
 @Named
 @ViewScoped
 public class UserForm implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	private static final Logger log = Logger.getLogger(UserForm.class.getName());
-	
+
 	UserVo vo;
-	
 
 	private String username;
 	private String password;
@@ -37,31 +37,44 @@ public class UserForm implements Serializable {
 	private String address;
 	private Integer age;
 	private boolean check;
-	private String file;
+	private String fileName;
 	private boolean showUpload = false;
 	private boolean showButton = true;
+	private UploadedFile fileUpload;
 
 	private List<String> selectedCities;
 	private List<String> cities;
-	
+
 	public void handleFileUpload() {
-		
+		if (fileUpload != null) {
+			System.out.println("FILE Name =>> " + fileUpload);
+			this.fileName = fileUpload.getFileName();
+		}
 	}
-	
+
 	public void showUploadButton() {
 		this.showUpload = true;
 		this.showButton = false;
 	}
+
 	public void onToggleSelect() {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Selected =>> "+ selectedCities));
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Selected =>> " + selectedCities));
 	}
-	
-	
+
 	public void addMessage() {
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(check ? "Not Ready" : "Ready"));
 	}
-	
-	
+
+	public UploadedFile getFileUpload() {
+		return fileUpload;
+	}
+
+	public void setFileUpload(UploadedFile fileUpload) {
+		System.out.println("FILE Upload =>> " + fileUpload);
+		this.fileUpload = fileUpload;
+
+	}
+
 	public boolean isShowButton() {
 		return showButton;
 	}
@@ -77,16 +90,17 @@ public class UserForm implements Serializable {
 	public void setShowUpload(boolean showUpload) {
 		this.showUpload = showUpload;
 	}
-	
-		public String getFile() {
-		return file;
+
+
+	public String getFileName() {
+		return fileName;
 	}
 
-	public void setFile(String file) {
-		this.file = file;
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
 
-		public boolean isCheck() {
+	public boolean isCheck() {
 		return check;
 	}
 
@@ -94,38 +108,37 @@ public class UserForm implements Serializable {
 		this.check = check;
 	}
 
-		public String getPassword() {
+	public String getPassword() {
 		return password;
 	}
 
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public void displayMessage() {
-		
+
 		FacesContext context = FacesContext.getCurrentInstance();
 		context.addMessage(null, new FacesMessage("Login Success, welcome " + username));
 	}
 
-		public List<String> getSelectedCities() {
-			return selectedCities;
-		}
+	public List<String> getSelectedCities() {
+		return selectedCities;
+	}
 
-		public void setSelectedCities(List<String> selectedCities) {
-			this.selectedCities = selectedCities;
-		}
+	public void setSelectedCities(List<String> selectedCities) {
+		this.selectedCities = selectedCities;
+	}
 
-		public List<String> getCities() {
-			return cities;
-		}
+	public List<String> getCities() {
+		return cities;
+	}
 
-		public void setCities(List<String> cities) {
-			this.cities = cities;
-		}
-	 	
+	public void setCities(List<String> cities) {
+		this.cities = cities;
+	}
 
-	public String getUsername() {	
+	public String getUsername() {
 		return username;
 	}
 
@@ -134,7 +147,7 @@ public class UserForm implements Serializable {
 	}
 
 	public String getName() {
-		
+
 		return name;
 	}
 
@@ -161,26 +174,25 @@ public class UserForm implements Serializable {
 	@PostConstruct
 	public void init() {
 		vo = new UserVo();
-		 cities = new ArrayList<>();
-	        cities.add("Miami");
-	        cities.add("London");
-	        cities.add("Paris");
-	        cities.add("Istanbul");
-	        cities.add("Berlin");
-	        cities.add("Barcelona");
-	        cities.add("Rome");
-	        cities.add("Brasilia");
-	        cities.add("Amsterdam");
+		cities = new ArrayList<>();
+		cities.add("Miami");
+		cities.add("London");
+		cities.add("Paris");
+		cities.add("Istanbul");
+		cities.add("Berlin");
+		cities.add("Barcelona");
+		cities.add("Rome");
+		cities.add("Brasilia");
+		cities.add("Amsterdam");
 
 	}
-	
+
 	public String handleInsertForm() {
-		log.info("DATA => {}"+ vo.toString());
-		
+		log.info("DATA => {}" + vo.toString());
+
 		return "index.xhtml";
 	}
-	
-	
+
 	public UserVo getVo() {
 		return vo;
 	}
@@ -188,7 +200,5 @@ public class UserForm implements Serializable {
 	public void setVo(UserVo vo) {
 		this.vo = vo;
 	}
-	
-	
 
 }

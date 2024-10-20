@@ -19,3 +19,121 @@
 .date-age {
 	display: flex; flex-direction: column; gap: 2px; width: 20rem;
 }
+
+/* .ui-fileupload-buttonbar {
+    border: none;
+    background-color:red;
+}
+.ui-fileupload {
+    display: inline-block;
+    border: none;
+}
+.ui-fileupload-content {
+    display: none;  
+} */
+
+
+
+
+/* Custom style for the file upload component */
+/* .custom-upload {
+    background-color: white !important; Apply background color to the main container
+} */
+
+/* Customize the file upload button */
+/* .ui-fileupload-simple .ui-button {
+    background-color: transparant !important; 
+    background-image: url('../images/excel.png');
+    
+    color:black;
+    border: 1px solid black;
+    padding: 10px 20px !important; 
+    border-radius: 5px !important;
+   
+} */
+
+
+.excel.ui-fileupload-simple .ui-button {
+    background-color: transparent !important;
+    background-image: url('../images/excel.png'); 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    border: 1px solid black;
+    padding: 10px 20px !important; 
+    border-radius: 5px !important; 
+    background-size: 40px 40px; 
+}
+
+.excel.ui-fileupload-simple .ui-button.ui-state-hover {
+    background-color: transparent !important;
+    background-image: url('../images/excel.png'); 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    border: 1px solid black;
+    padding: 10px 20px !important; 
+    border-radius: 5px !important; 
+    background-size: 40px 40px; 
+    
+}
+
+.pdf.ui-fileupload-simple .ui-button {
+    background-color: transparent !important;
+    background-image: url('../images/pdf.png'); 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    border: 1px solid black;
+    padding: 10px 20px !important; 
+    border-radius: 5px !important; 
+    background-size: 40px 40px; 
+}
+
+.pdf.ui-fileupload-simple .ui-button.ui-state-hover {
+    background-color: transparent !important;
+    background-image: url('../images/pdf.png'); 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    border: 1px solid black;
+    padding: 10px 20px !important; 
+    border-radius: 5px !important; 
+    background-size: 40px 40px; 
+    
+}
+
+
+
+/* Customize the button hover state */
+/* .ui-fileupload-simple .ui-button:hover {
+    background-color: #e1e9ec !important; Darker red on hover
+}
+ */
+/* Optional: Customize the button icon */
+/* .ui-fileupload-simple .ui-button-icon-left {
+    color: black !important; Ensure the icon is white
+}
+ */
+/* .ui-fileupload-button {
+    background-color: white !important; 
+} */
+
+/* If you want to change the button color */
+/* .custom-upload .ui-fileupload-choose {
+    background-color: white !important; 
+    color: black; 
+}
+ */
+/* Customize the container of the file name */
+/* .custom-upload .custom-upload .ui-fileupload-filename {
+    background-color: white !important; Background color of the filename box
+    color: black; Change the text color of the filename
+} */
+
+/* .ui-fileupload  {
+    border: none;
+} */
+
+/* .test {
+    color: red !important;
+} */
+
+
+
