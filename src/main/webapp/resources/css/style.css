@@ -1,0 +1,21 @@
+/* Force Flexbox layout for the selectManyCheckbox grid */
+#myCheckboxGroup .ui-selectmanycheckbox .ui-g {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px;
+}
+
+/* Customize individual items within the checkbox group */
+#myCheckboxGroup .ui-selectmanycheckbox .ui-selectmanycheckbox-item {
+    margin-bottom: 10px;
+    color: #333; /* Customize text color */
+}
+
+/* Adjust spacing for the checkboxes */
+#myCheckboxGroup .ui-selectmanycheckbox .ui-selectmanycheckbox-item input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.date-age {
+	display: flex; flex-direction: column; gap: 2px; width: 20rem;
+}
