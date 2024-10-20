@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui" template="../index.xhtml">
+
+
+	<ui:define name="content">
+		<h:form id="form">
+			<p:dataTable var="student" value="#{studentForm.studentList}"
+				paginator="true" rows="10"
+				paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+				rowsPerPageTemplate="5,10,15"
+				id="studentTable">
+					
+				<p:column headerText="Student ID" sortBy="#{student.id}"
+					filterBy="#{student.id}">
+					<h:outputText value="#{student.id}" />
+				</p:column>
+				<p:column headerText="Name" sortBy="#{student.name}"
+					filterBy="#{student.name}">
+					<h:outputText style="vertical-align: middle; margin-left: .5rem"
+						value="#{student.name}" />
+				</p:column>
+				<p:column headerText="Address" sortBy="#{student.address}"
+					filterBy="#{student.address}">
+					<h:outputText style="vertical-align: middle; margin-left: .5rem"
+						value="#{student.address}" />
+				</p:column>
+				<p:column headerText="Action">
+					<p:commandButton value="edit"/>
+					<br/>
+					<p:commandButton value="delete" styleClass="ui-button-danger"/>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+

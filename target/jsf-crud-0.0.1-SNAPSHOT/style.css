@@ -1,0 +1,56 @@
+/* Force Flexbox layout for the selectManyCheckbox grid */
+#myCheckboxGroup .ui-selectmanycheckbox .ui-g {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px;
+}
+
+/* Customize individual items within the checkbox group */
+#myCheckboxGroup .ui-selectmanycheckbox .ui-selectmanycheckbox-item {
+    margin-bottom: 10px;
+    color: #333; /* Customize text color */
+}
+
+/* Adjust spacing for the checkboxes */
+#myCheckboxGroup .ui-selectmanycheckbox .ui-selectmanycheckbox-item input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.date-age {
+	display: flex; flex-direction: column; gap: 2px; width: 20rem;
+}
+
+
+
+/* Custom style for the file upload component */
+.custom-upload {
+    background-color: white !important; /* Apply background color to the main container */
+}
+
+/* Target the input element inside the file upload */
+.custom-upload .ui-fileupload-button {
+    background-color: white !important; /* Style the file upload button */
+}
+
+/* If you want to change the button color */
+.custom-upload .ui-fileupload-choose {
+    background-color: white !important; /* Style the file choose button */
+    color: black; /* Change the text color of the button */
+}
+
+/* Customize the container of the file name */
+.custom-upload .ui-fileupload-filename {
+    background-color: white !important; /* Background color of the filename box */
+    color: black; /* Change the text color of the filename */
+}
+
+.ui-fileupload  {
+    border: none;
+}
+
+#test {
+    color: red !important;
+}
+
+
+
