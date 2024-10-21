@@ -89,11 +89,19 @@ public class StudentForm implements Serializable {
     }
     
     public void editStudent(Student std) {
-    	System.out.println("STD update => "+ std);
     	vo.setId(std.getId());
     	vo.setName(std.getName());
     	vo.setAddress(std.getAddress());
     	
+    }
+    
+    public void deleteStudent(Student std) {
+    	service.deleteStudent(std.getId());
+    	studentList = service.getAll();
+    }
+    
+    public void searchStudent() {
+    	studentList = service.searchStudent(vo.getId(), vo.getName(), vo.getAddress());
     }
 	
 	

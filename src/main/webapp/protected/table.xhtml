@@ -36,6 +36,33 @@
 					</p:menu>
 				</f:facet>
 			</p:panel>
+			
+			<p:panel header="Search Student" toggleable="true" closable="true"
+				toggleSpeed="500" closeSpeed="500" widgetVar="panelSearch">
+				<p:panelGrid columns="2" style="width:40rem">
+					<p:outputLabel value="Student Name " style="width:20%" />
+					<p:inputText value="#{studentForm.vo.name}" style="width:80%" />
+					<p:outputLabel value="Student Address " style="width:20%" />
+					<p:inputText value="#{studentForm.vo.address}" style="width:80%" />
+					
+					<p:commandButton value="Search" process="@form"
+						update="studentTable" action="#{studentForm.searchStudent}"
+						style="width:30%"/>
+					<p:commandButton value="Reset" process="@form"
+						update="@form" action="#{studentForm.resetForm}"
+						style="width:30%" />
+				</p:panelGrid>
+				<f:facet name="options">
+					<p:menu>
+						<p:submenu label="Settings">
+							<p:menuitem value="Toggle" url="#" icon="pi pi-clone"
+								onclick="PF('panelSearch').toggle()" />
+							<p:menuitem value="Remove" url="#" icon="pi pi-times"
+								onclick="PF('panelSearch').close()" />
+						</p:submenu>
+					</p:menu>
+				</f:facet>
+			</p:panel>
 
 			<p:panel header="Table Student" toggleable="true" closable="true"
 				toggleSpeed="500" closeSpeed="500" widgetVar="panel">
@@ -62,7 +89,8 @@
 					<p:column headerText="Action">
 						<p:commandButton value="edit" style="width:5rem" process="@form" update="@form" action="#{studentForm.editStudent(student)}"/>
 						<br />
-						<p:commandButton value="delete" styleClass="ui-button-danger"
+						<p:commandButton value="delete" styleClass="ui-button-danger" process="@form" update="@form"
+							action="#{studentForm.deleteStudent(student)}"
 							style="width:5rem" />
 					</p:column>
 				</p:dataTable>
