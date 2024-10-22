@@ -3,6 +3,7 @@ package com.heydie.form;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
@@ -16,7 +17,9 @@ import javax.inject.Named;
 
 import org.primefaces.event.CloseEvent;
 import org.primefaces.event.ToggleEvent;
+import org.primefaces.model.FilterMeta;
 import org.primefaces.model.LazyDataModel;
+import org.primefaces.model.SortMeta;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.heydie.VO.StudentVO;
@@ -44,8 +47,34 @@ public class StudentForm implements Serializable {
 	public void init() {
 		vo = new StudentVO();
 		studentList = service.getAll();
+		listStd = new LazyDataModel<Student>() {
+			
+			@Override
+			public List<Student> load(int first, int pageSize, Map<String, SortMeta> sortBy, Map<String, FilterMeta> filterBy) {
+				return service.listCriteria(first, pageSize, filterBy);
+			}
+			
+			@Override
+			public int count(Map<String, FilterMeta> filterBy) {
+				return service.countData().intValue();
+			}
+		};
 	}
 	
+	
+	
+	public LazyDataModel<Student> getListStd() {
+		return listStd;
+	}
+
+
+
+	public void setListStd(LazyDataModel<Student> listStd) {
+		this.listStd = listStd;
+	}
+
+
+
 	public StudentVO getVo() {
 		return vo;
 	}
