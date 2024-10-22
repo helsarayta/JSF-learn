@@ -67,7 +67,7 @@
 			<p:panel header="Table Student" toggleable="true" closable="true"
 				toggleSpeed="500" closeSpeed="500" widgetVar="panel">
 
-				<p:dataTable var="student" value="#{studentForm.listStd}"
+				<p:dataTable var="student" value="#{studentForm.studentList}"
 					paginator="true" rows="10" paginatorPosition="bottom"
 					paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
 					rowsPerPageTemplate="5,10,15" id="studentTable">
