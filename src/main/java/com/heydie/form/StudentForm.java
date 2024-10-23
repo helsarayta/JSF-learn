@@ -15,6 +15,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.PrimeFaces;
 import org.primefaces.event.CloseEvent;
 import org.primefaces.event.ToggleEvent;
 import org.primefaces.model.FilterMeta;
@@ -118,6 +119,7 @@ public class StudentForm implements Serializable {
     }
     
     public void editStudent(Student std) {
+//    	PrimeFaces.current().executeScript("PF('').show()");
     	vo.setId(std.getId());
     	vo.setName(std.getName());
     	vo.setAddress(std.getAddress());
@@ -131,6 +133,11 @@ public class StudentForm implements Serializable {
     
     public void searchStudent() {
     	studentList = service.searchStudent(vo.getId(), vo.getName(), vo.getAddress());
+    }
+    
+    public void showNotif() {
+    	FacesContext.getCurrentInstance().
+        addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Save Successfully", "Save Successfully"));
     }
 	
 	

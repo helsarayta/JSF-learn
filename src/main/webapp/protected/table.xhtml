@@ -9,7 +9,7 @@
 
 	<ui:define name="content">
 		<h:form id="form">
-
+			<p:growl id="growl" showDetail="" />
 			<p:panel header="Form Student" toggleable="true" closable="true"
 				toggleSpeed="500" closeSpeed="500" widgetVar="panelForm">
 				<p:panelGrid columns="2" style="width:40rem">
@@ -19,8 +19,8 @@
 					<p:inputText value="#{studentForm.vo.address}" style="width:80%" />
 					
 					<p:commandButton value="Submit" process="@form"
-						update="@form, studentTable" action="#{studentForm.saveStudent}"
-						style="width:30%"/>
+						update="@form, studentTable, growl" action="#{studentForm.saveStudent}"
+						style="width:30%" actionListener="#{studentForm.showNotif}"/>
 					<p:commandButton value="Reset" process="@form"
 						update="@form" action="#{studentForm.resetForm}"
 						style="width:30%" />
