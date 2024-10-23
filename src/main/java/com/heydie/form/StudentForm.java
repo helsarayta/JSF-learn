@@ -119,7 +119,7 @@ public class StudentForm implements Serializable {
     }
     
     public void editStudent(Student std) {
-//    	PrimeFaces.current().executeScript("PF('').show()");
+    	PrimeFaces.current().executeScript("PF('dlg2').show()");
     	vo.setId(std.getId());
     	vo.setName(std.getName());
     	vo.setAddress(std.getAddress());

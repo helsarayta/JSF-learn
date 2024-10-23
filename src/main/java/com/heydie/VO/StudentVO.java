@@ -10,6 +10,23 @@ public class StudentVO implements Serializable{
 	private String name;
 	private String address;
 	
+	private String searchName;
+	private String searchAddress;
+	
+	
+	
+	public String getSearchName() {
+		return searchName;
+	}
+	public void setSearchName(String searchName) {
+		this.searchName = searchName;
+	}
+	public String getSearchAddress() {
+		return searchAddress;
+	}
+	public void setSearchAddress(String searchAddress) {
+		this.searchAddress = searchAddress;
+	}
 	public Long getId() {
 		return id;
 	}
